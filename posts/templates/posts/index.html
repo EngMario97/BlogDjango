@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load humanize %}
+{% load omfilters %}
+
 
 {% block content %}
 <!-- CONTENT -->
@@ -28,7 +30,7 @@
                 <small class="text-muted">
                     {{ post.date_post|naturalday|title }}
                     |
-                    {{ post.amount_comments }} comentário(s)
+                    {{ post.amount_comments|plural_comments}}
                     |
                     {{ post.category_post }}</small>
             </p>
