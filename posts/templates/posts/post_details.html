@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% load omfilters %}
 
@@ -67,19 +68,15 @@
                     {% endfor %}
 
                     {% for visible_field in form.visible_fields %}
-                    <div class="form-group">
-                        {{ visible_field.label_tag }}
-                        <br>
-                        {{ visible_field }}
-                        {{ visible_field.errors }}
-                    </div>
+                    {{ visible_field|as_crispy_field }}
                     {% endfor %}
+
+                    <div class="g-recaptcha" data-sitekey="COLOQUE A CHAVE DE SITE AQUI"></div>
+                    <br/>
+
                     {% include 'partial/_messages.html' %}
                     <input id="envia_comentario" type="submit" class="btn btn-primary" value="Enviar">
-
                 </form>
-
-
             </div>
             <div class="col-xl"></div>
         </div>
